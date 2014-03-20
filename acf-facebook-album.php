@@ -1,14 +1,16 @@
 <?php
 
 /*
-Plugin Name: Advanced Custom Fields: Facebook Album Field
-Plugin URI:  https://github.com/Graffiti2000Srl/acf-facebook-album
-Description: Adds the Facebook Album field
-Version:     0.1
-Author:      Graffiti2000 s.r.l.
-Author URI:  http://www.graffiti2000.com/
-License:     GPL
-Copyright:   Graffiti2000 s.r.l.
+Plugin Name:       Advanced Custom Fields: Facebook Album Field
+Plugin URI:        https://github.com/Graffiti2000Srl/acf-facebook-album
+Description:       Adds the Facebook Album field
+Version:           0.1
+Author:            Graffiti2000 s.r.l.
+Author URI:        http://www.graffiti2000.com/
+License:           GPL
+Copyright:         Graffiti2000 s.r.l.
+GitHub Plugin URI: https://github.com/Graffiti2000Srl/acf-facebook-album
+GitHub Branch:     master
 */
 
 define('ACF_FA_PATH', dirname(__FILE__));
