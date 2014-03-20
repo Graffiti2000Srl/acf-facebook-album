@@ -22,7 +22,7 @@ class acf_facebook_album_plugin
 	 * 
 	 * @var array
 	 */
-	var $settings;
+	public $settings;
 
 
 	/**
@@ -35,7 +35,7 @@ class acf_facebook_album_plugin
 	public function __construct()
 	{
 		// vars
-		$settings = array(
+		$this->settings = array(
 			'version'  => '0.1',
 			'basename' => plugin_basename(__FILE__),
 		);
