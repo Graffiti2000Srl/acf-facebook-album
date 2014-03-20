@@ -59,5 +59,3 @@ class acf_facebook_album_plugin
 }
 
 new acf_facebook_album_plugin();
-
-?>

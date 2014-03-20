@@ -127,5 +127,3 @@ class acf_field_facebook_album extends acf_field
 
 // create field
 new acf_field_facebook_album();
-
-?>
