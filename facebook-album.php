@@ -33,8 +33,8 @@ class acf_field_facebook_album extends acf_field
 		?>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
-		<label><?php _e('Facebook Page ID', 'acf'); ?></label>
-		<p class="description"><?php _e('Your Facebook Page ID', 'acf'); ?></p>
+		<label><?php _e('Facebook Page URI', 'acf'); ?></label>
+		<p class="description"><?php _e('Your Facebook Page URI', 'acf'); ?></p>
 	</td>
 	<td>
 		<?php
