@@ -4,7 +4,7 @@
 Plugin Name:       Advanced Custom Fields: Facebook Album Field
 Plugin URI:        https://github.com/Graffiti2000Srl/acf-facebook-album
 Description:       Adds the Facebook Album field
-Version:           0.1
+Version:           0.2
 Author:            Graffiti2000 s.r.l.
 Author URI:        http://www.graffiti2000.com/
 License:           GPL

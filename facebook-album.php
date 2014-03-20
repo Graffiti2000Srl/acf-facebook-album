@@ -6,7 +6,7 @@ class acf_field_facebook_album extends acf_field
 
 	public $defaults;
 
-	function __construct()
+	public function __construct()
 	{
 		$this->name     = 'facebook_album';
 		$this->label    = __('Facebook Album');
@@ -27,7 +27,7 @@ class acf_field_facebook_album extends acf_field
 
 	}
 
-	function create_options($field)
+	public function create_options($field)
 	{
 		$field = array_merge($this->defaults, $field);
 		$key = $field['name'];
@@ -72,7 +72,7 @@ class acf_field_facebook_album extends acf_field
 
 	}
 
-	function create_field( $field )
+	public function create_field( $field )
 	{
 		$field = array_merge($this->defaults, $field); $albums = array(); $continue = false;
 		$data = json_decode(file_get_contents('https://graph.facebook.com/'.$field['facebook_page'].'/albums?fields=name'), true);
@@ -113,12 +113,12 @@ class acf_field_facebook_album extends acf_field
 		}
 	}
 
-	function format_value( $value, $post_id, $field )
+	public function format_value( $value, $post_id, $field )
 	{
 		return $value;
 	}
 
-	function format_value_for_api( $value, $post_id, $field )
+	public function format_value_for_api( $value, $post_id, $field )
 	{
 		return $value;
 	}
