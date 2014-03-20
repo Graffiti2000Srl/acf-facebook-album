@@ -17,46 +17,45 @@ define('ACF_FA_PATH', dirname(__FILE__));
 
 class acf_facebook_album_plugin
 {
-	/**
-	 * Array of settings
-	 * 
-	 * @var array
-	 */
-	public $settings;
-
-
-	/**
-	 *  Constructor
-	 *
-	 *  @since 0.1
-	 *  @created: 2014/03/20
-	 */
-
-	public function __construct()
-	{
-		// vars
-		$this->settings = array(
-			'version'  => '0.1',
-			'basename' => plugin_basename(__FILE__),
-		);
-
-		// actions
-		add_action('acf/register_fields', array($this, 'register_fields'));
-	}
-
-
-	/**
-	 *  Register the field to ACF plugin
-	 *
-	 *  @since: 0.1
-	 *  @created: 2014/03/20
-	 */
-
-	public function register_fields()
-	{
-		require_once(ACF_FA_PATH . '/facebook-album.php');
-	}
-
+    /**
+     * Array of settings
+     * 
+     * @var array
+     */
+    public $settings;
+    
+    
+    /**
+     *  Constructor
+     *
+     *  @since 0.1
+     *  @created: 2014/03/20
+     */
+    
+    public function __construct()
+    {
+	   // vars
+	   $this->settings = array(
+	   	'version'  => '0.1',
+	   	'basename' => plugin_basename(__FILE__),
+	   );
+    
+	   // actions
+	   add_action('acf/register_fields', array($this, 'register_fields'));
+    }
+    
+    
+    /**
+     *  Register the field to ACF plugin
+     *
+     *  @since: 0.1
+     *  @created: 2014/03/20
+     */
+    
+    public function register_fields()
+    {
+	   require_once(ACF_FA_PATH . '/facebook-album.php');
+    }
 }
 
 new acf_facebook_album_plugin();
