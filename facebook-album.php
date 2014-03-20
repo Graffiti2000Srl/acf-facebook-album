@@ -1,28 +1,33 @@
 <?php
-class acf_field_facebook_album extends acf_field {
 
-	var $settings,
-		$defaults;
+class acf_field_facebook_album extends acf_field 
+{
+	public $settings;
+
+	public $defaults;
 
 	function __construct()
 	{
-		$this->name = 'facebook_album';
-		$this->label = __('Facebook Album');
+		$this->name     = 'facebook_album';
+		$this->label    = __('Facebook Album');
 		$this->category = __("Choice",'acf');
+
 		$this->defaults = array(
-			'allow_null' => 1,
-			'facebook_page' => ''
+			'allow_null'    => 1,
+			'facebook_page' => '',
 		);
+
 		parent::__construct();
+
 		$this->settings = array(
-			'path' => apply_filters('acf/helpers/get_path', __FILE__),
-			'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
-			'version' => '1.0.0'
+			'path'    => apply_filters('acf/helpers/get_path', __FILE__),
+			'dir'     => apply_filters('acf/helpers/get_dir', __FILE__),
+			'version' => '0.1',
 		);
 
 	}
 
-	function create_options( $field )
+	function create_options($field)
 	{
 		$field = array_merge($this->defaults, $field);
 		$key = $field['name'];
@@ -117,7 +122,6 @@ class acf_field_facebook_album extends acf_field {
 	{
 		return $value;
 	}
-
 }
 
 
