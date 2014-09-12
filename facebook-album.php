@@ -27,78 +27,33 @@ class acf_field_facebook_album extends acf_field
         );
     }
 
-    public function create_options($field)
-    {
-        $field = array_merge($this->defaults, $field);
-        $key   = $field['name'];
-        ?>
-        <tr class="field_option field_option_<?php echo $this->name; ?>">
-            <td class="label">
-                <label><?php _e('Return Value', 'acf'); ?></label>
-                <p><?php _e('Specify the returned value on front end', 'acf') ?></p>
-            </td>
-            <td>
-                <?php
+    function render_field_settings( $field ) {
+        // Formatting
+        acf_render_field_setting( $field, array(
+            'label'			=> __('Return Value','acf'),
+            'instructions'	=> __('Specify the returned value on front end','acf'),
+            'type'			=> 'radio',
+            'name'			=> 'save_format',
+            'choices'		=> array(
+                'images' => __('Array of images', 'acf'),
+                'album'  => __('Album object', 'acf'),
+                'id'     => __('Album ID', 'acf'),
+                'ul'     => __('List of images', 'acf'),
+                'div'    => __('Containers with background', 'acf'),
+            )
+        ));
 
-                do_action('acf/create_field', array(
-                    'type'		=>	'radio',
-                    'name'		=>	'fields['.$key.'][save_format]',
-                    'value'		=>	$field['save_format'],
-                    'layout'	=>	'horizontal',
-                    'choices'	=> array(
-                        'images' => __('Array of images', 'acf'),
-                        'album'  => __('Album object', 'acf'),
-                        'id'     => __('Album ID', 'acf'),
-                        'ul'     => __('List of images', 'acf'),
-                        'div'    => __('Containers with background', 'acf'),
-                    )
-                ));
+        // Facebook Page URI
+        acf_render_field_setting( $field, array(
+            'label'			=> __('Facebook Page URI','acf'),
+            'instructions'	=> __('Your Facebook Page URI (if not specified, you\'ll be promped in the post page)','acf'),
+            'type'			=> 'text',
+            'name'			=> 'facebook_page',
+        ));
 
-                ?>
-            </td>
-        </tr>
-        <tr class="field_option field_option_<?php echo $this->name; ?>">
-            <td class="label">
-                <label><?php _e('Facebook Page URI', 'acf'); ?></label>
-                <p class="description"><?php _e('Your Facebook Page URI', 'acf'); ?></p>
-            </td>
-            <td>
-                <?php
-
-                do_action('acf/create_field', array(
-                    'type'  => 'text',
-                    'name'  => 'fields['.$key.'][facebook_page]',
-                    'value' => $field['facebook_page'],
-                ));
-
-                ?>
-            </td>
-        </tr>
-        <tr class="field_option field_option_<?php echo $this->name; ?>">
-            <td class="label">
-                <label><?php _e('Allow Null?', 'acf'); ?></label>
-            </td>
-            <td>
-                <?php
-
-                do_action('acf/create_field', array(
-                    'type'	  => 'radio',
-                    'name'	  => 'fields['.$key.'][allow_null]',
-                    'value'	  => $field['allow_null'],
-                    'choices' => array(
-                        1 => __("Yes", 'acf'),
-                        0 => __("No", 'acf'),
-                    ),
-                    'layout'  => 'horizontal',
-                ));
-
-                ?>
-            </td>
-        </tr>
-    <?php
     }
 
-    public function create_field($field)
+    public function render_field($field)
     {
         $field    = array_merge($this->defaults, $field);
         $albums   = array();
@@ -107,6 +62,8 @@ class acf_field_facebook_album extends acf_field
         $page     = $field['facebook_page'];
         $pageName = substr(strrchr(trim($page, '/'), '/'),1);
         $pageID   = json_decode(file_get_contents('https://graph.facebook.com/' . $pageName . '?fields=id'));
+
+        echo '<div class="acf-input-wrap">';
 
         if (isset($pageID)) {
             $pageID = $pageID->id;
@@ -149,14 +106,11 @@ class acf_field_facebook_album extends acf_field
         } else {
             echo '<p>Your plugin is misconfigured. Set your Facebook Page URI.</p>';
         }
+
+        echo '</div>';
     }
 
     public function format_value($value, $post_id, $field)
-    {
-        return $value;
-    }
-
-    public function format_value_for_api($value, $post_id, $field)
     {
         $format = $field['save_format'];
 
