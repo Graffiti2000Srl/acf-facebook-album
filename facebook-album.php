@@ -40,6 +40,7 @@ class acf_field_facebook_album extends acf_field
                 'id'     => __('Album ID', 'acf'),
                 'ul'     => __('List of images', 'acf'),
                 'div'    => __('Containers with background', 'acf'),
+                'js'     => __('Containers with data-src', 'acf'),
             )
         ));
 
@@ -115,6 +116,9 @@ class acf_field_facebook_album extends acf_field
         $format = $field['save_format'];
 
         switch ($format) {
+            case 'js':
+                $value = "<div data-src=\"https://graph.facebook.com/$value/photos\"></div>";
+                break;
             case 'images':
             case 'ul':
             case 'div':
